@@ -1,5 +1,3 @@
---Versão Final.
-
 -- Database: Alterdata
 
 -- DROP DATABASE "Alterdata";
@@ -24,11 +22,10 @@ drop table usuario;
 create table usuario (
 	id int primary key,
 	nome varchar(50) not null,
-	email varchar(50) not null,
+	email varchar(50) unique not null,
 	senha varchar(50) null,
 	data_cadastro timestamp default now(),
-	ativo bool default true,
-	CONSTRAINT usuario_email_senha UNIQUE(email,senha)
+	ativo bool default true
 );
 
 create table login(
