@@ -1,0 +1,267 @@
+﻿<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+@*<div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+                a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+                is an ideal platform for building RESTful applications on the .NET Framework.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
+
+<h1>
+    Testes de Acesso Externo Alterdata Recursos.
+</h1>
+<ul>
+    <li>
+        <h2>USU&Aacute;RIOS</h2>
+    </li>
+    <li>
+        <h3>Inserir</h3>
+        <form id="formInserirUsuario" method="post" action="/api/usuario/insere">
+            <p>
+                <label id="inserirUsuarioNome" for="nome">Nome:</label>
+                <input type="text" id="txtInsereUsuarioNome" name="nome" />
+            </p>
+            <p>
+                <label id="inserirUsuarioEmail" for="email">Email:</label>
+                <input type="text" id="txtInsereUsuarioEmail" name="email" />
+            </p>
+            <p>
+                <label id="inserirUsuarioSenha" for="senha">Senha:</label>
+                <input type="text" id="txtInsereUsuarioSenha" name="senha" />
+            </p>
+            <input type="Submit" id="btnInserirUsuario" value="Enviar" />
+        </form>
+    </li>
+    <li>
+        <h3>Alterar</h3>
+        <form id="formAlterarUsuario" method="put" action="/api/usuario/altera">
+            <p>
+                <label id="alterarUsuarioId" for="id">Id:</label>
+                <input type="text" id="txtAlteraUsuarioId" name="id" />
+            </p>
+            <p>
+                <label id="alterarUsuarioNome" for="nome">Nome:</label>
+                <input type="text" id="txtAlteraUsuarioNome" name="nome" />
+            </p>
+            <p>
+                <label id="alterarUsuarioEmail" for="email">Email:</label>
+                <input type="text" id="txtAlteraUsuarioEmail" name="email" />
+            </p>
+            <p>
+                <label id="alterarUsuarioSenha" for="senha">Senha:</label>
+                <input type="text" id="txtAlteraUsuarioSenha" name="senha" />
+            </p>
+            <p>
+                <label id="alterarUsuarioAtivo" for="ativo">Ativo:</label>
+                <input type="checkbox" id="cbAlteraUsuarioAtivo" name="ativo" />
+            </p>
+            <input type="Submit" id="btnAlterarUsuario" value="Enviar" />
+        </form>
+    </li>
+    <li>
+        <h3>Ler Dados</h3>
+        <div>
+            <label>ID do usu&aacute;rio:</label><input type="text" id="tbUsuariosId" width="50" />
+            <input type="button" id="btnLerUsuario" value="Ler Usuario" />&nbsp;<input type="button" id="btnLerUsuarios" value="Ler todos os usuarios" /><br />
+        </div>
+        <br />
+        <div>
+            <ul id="usuariosResulte"></ul>
+        </div>
+    </li>
+</ul>
+<ul>
+    <li>
+        <h2>RECURSOS</h2>
+    </li>
+    <li>
+        <h3>Inserir</h3>
+        <form id="formInserirRecurso" method="get" action="/api/recurso/insere">
+            <p>
+                <label id="inserirRecursoTitulo" for="nome">T&Iacute;tulo:</label>
+                <input type="text" name="titulo" id="txtInsereRecursoTitulo" />
+            </p>
+            <p>
+                <label id="inserirRecursoComentario" for="email">Coment&Aacute;rio:</label>
+                <input type="text" name="comentario" id="txtInsereRecursoComentario" />
+            </p>
+            <input type="Submit" id="btnInserirRecurso" value="Enviar" />
+        </form>
+    </li>
+    <li>
+        <h3>Alterar</h3>
+        <form id="formAlteraRecurso" method="put" action="/api/recurso/altera">
+            <p>
+                <label id="alteraRecursoId" for="id">Id:</label>
+                <input type="text" name="id" id="txtAlteraRecursoId" />
+            </p>
+            <p>
+                <label id="alteraRecursoTitulo" for="nome">T&Iacute;tulo:</label>
+                <input type="text" name="titulo" id="txtAlteraRecursoTitulo" />
+            </p>
+            <p>
+                <label id="alteraRecursoComentario" for="email">Coment&Aacute;rio:</label>
+                <input type="text" name="comentario" id="txtAlteraRecursoComentario" />
+            </p>
+            <p>
+                <label id="alterarRecursoStatus" for="id">Status:</label>
+                <input type="text" name="status" id="txtAlteraRecursoStatus" />
+            </p>
+            <input type="Submit" id="btnAlteraRecurso" value="Enviar" />
+        </form>
+    </li>
+    <li>
+        <h3>Ler Dados</h3>
+        <div>
+            <label>ID do recurso:</label><input type="text" id="tbRecursosId" width="50" />
+            <input type="button" id="btnLerRecurso" value="Ler Recurso" />&nbsp;<input type="button" id="btnLerRecursos" value="Ler todos os recursos" /><br />
+        </div>
+        <br />
+        <div>
+            <ul id="recursosResulte"></ul>
+        </div>
+    </li>
+</ul>
+
+@section scripts{
+    <script type="text/javascript">
+
+        //--SCRIPTS USUÁRIO--
+
+        $('#btnLerUsuario').click(function () {
+            var uri = '/api/usuario/selecionar?id=' + $('#tbUsuariosId').val();
+            $.get(uri, function (data) {
+                $("#usuariosResulte").empty();
+                $.each(data, function (index) {
+                    str = 'id=' + $(this)[0].id + ', nome=' + $(this)[0].nome + ', email=' + $(this)[0].email + ', data_cadastro=' + $(this)[0].data_cadastro + ', ativo=' + $(this)[0].ativo;
+                    $("#usuariosResulte").append('<li>' + str + '</li>');
+                });
+            });
+        });
+
+        $('#btnLerUsuarios').click(function () {
+            var uri = '/api/usuario/selecionarTodos';
+            $.get(uri, function (data) {
+                $("#usuariosResulte").empty();
+                $.each(data, function (index) {
+                    str = 'id=' + $(this)[0].id + ', nome=' + $(this)[0].nome + ', email=' + $(this)[0].email + ', data_cadastro=' + $(this)[0].data_cadastro + ', ativo=' + $(this)[0].ativo;
+                    $("#usuariosResulte").append('<li>' + str + '</li>');
+                });
+            });
+        });
+
+        $("#formInserirUsuario").submit(function () {
+            var uri = '/api/usuario/insere';
+            var form = "{'nome':'" + $('#txtInsereUsuarioNome').val() + "','email':'" + $('#txtInsereUsuarioEmail').val() + "','senha':'" + $('#txtInsereUsuarioSenha').val() + "'}";
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: uri,
+                dataType: "json",
+                data: JSON.stringify(form),
+                success: function (value) { alert('Usuário inserido com sucesso: ID=' + value); },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Erro criando usuário: ' + jqXHR.responseText);
+                }
+            });
+            return false;
+        });
+
+        $("#formAlterarUsuario").submit(function () {
+            var uri = '/api/usuario/altera' + "?id=" + $('#txtAlteraUsuarioId').val();
+            var cbAlteraUsuarioAtivo = + ($('#cbAlteraUsuarioAtivo').prop("checked") == true) ? 'true' : 'false';
+            var form = "{'id':'" + $('#txtAlteraUsuarioId').val() + "','nome':'" + $('#txtAlteraUsuarioNome').val() + "','email':'" + $('#txtAlteraUsuarioEmail').val() + "','senha':'" + $('#txtAlteraUsuarioSenha').val() + "','ativo':'" + cbAlteraUsuarioAtivo + "'}";
+            $.ajax({
+                type: 'PUT',
+                contentType: 'application/json',
+                url: uri,
+                dataType: "json",
+                data: JSON.stringify(form),
+                success: function (value) { alert('Usuário alterado com sucesso.'); },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Erro ao alterar usuário: ' + jqXHR.responseText);
+                }
+            });
+            return false;
+        });
+
+
+
+        //--SCRIPTS RECURSO--
+
+        $('#btnLerRecurso').click(function () {
+            var uri = '/api/recurso/selecionar?id=' + $('#tbRecursosId').val();
+            $.get(uri, function (data) {
+                $("#recursosResulte").empty();
+                $.each(data, function (index) {
+                    str = 'id=' + $(this)[0].id + ', titulo=' + $(this)[0].titulo + ', comentario=' + $(this)[0].comentario + ', data_cadastro=' + $(this)[0].data_cadastro + ', status=' + $(this)[0].status;
+                    $("#recursosResulte").append('<li>' + str + '</li>');
+                });
+            });
+        });
+
+        $('#btnLerRecursos').click(function () {
+            var uri = '/api/recurso/selecionarTodos';
+            $.get(uri, function (data) {
+                $("#recursosResulte").empty();
+                $.each(data, function (index) {
+                    str = 'id=' + $(this)[0].id + ', titulo=' + $(this)[0].titulo + ', comentario=' + $(this)[0].comentario + ', data_cadastro=' + $(this)[0].data_cadastro + ', status=' + $(this)[0].status;
+                    $("#recursosResulte").append('<li>' + str + '</li>');
+                });
+            });
+        });
+
+        $("#formInserirRecurso").submit(function () {
+            var uri = '/api/recurso/insere';
+            var form = "{'titulo':'" + $('#txtInsereRecursoTitulo').val() + "','comentario':'" + $('#txtInsereRecursoComentario').val() + "'}";
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: uri,
+                dataType: "json",
+                data: JSON.stringify(form),
+                success: function (value) { alert('Recurso inserido com sucesso: ID=' + value); },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Erro criando Recurso: ' + jqXHR.responseText);
+                }
+            });
+            return false;
+        });
+
+        $("#formAlteraRecurso").submit(function () {
+            var uri = '/api/recurso/altera' + "?id=" + $('#txtAlteraRecursoId').val();
+            var cbAlteraRecursoAtivo = + ($('#cbAlteraRecursoAtivo').prop("checked") == true) ? 'true' : 'false';
+            var form = "{'id':'" + $('#txtAlteraRecursoId').val() + "','titulo':'" + $('#txtAlteraRecursoTitulo').val() + "','comentario':'" + $('#txtAlteraRecursoComentario').val() + "','status':'" + $('#txtAlteraRecursoStatus').val() + "'}";
+            $.ajax({
+                type: 'PUT',
+                contentType: 'application/json',
+                url: uri,
+                dataType: "json",
+                data: JSON.stringify(form),
+                success: function (value) { alert('Recurso alterado com sucesso.'); },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Erro ao alterar Recurso: ' + jqXHR.responseText);
+                }
+            });
+            return false;
+        });
+    </script>
+}

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="application/json; charset=utf-8">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <title>Cadastro</title>
+</head>
+<body>
+    <!--<div id="body">
+        <ul id="usuarios"></ul>
+    </div>
+    <div id="form">
+        <form id="saveUsuarioForm" method="post">
+            <h3>Create a new Usuario</h3>
+            <p>
+                <label for="usuarioNome">Nome:</label>
+                <input type="text" name="nome" />
+            </p>
+            <p>
+                <label for="usuarioEmail">Email:</label>
+                <input type="text" name="email" />
+            </p>
+            <p>
+                <label for="usuarioSenha">Senha:</label>
+                <input type="text" name="senha" />
+            </p>
+            <input type="button" id="saveUsuario" value="Save" />
+        </form>
+    </div>
+    <script type="text/javascript">
+        $('head').first('<meta http-equiv="Content-Type:application/json" content="text/html; charset=utf-8">');
+        $(function () {
+            $.getJSON('http://localhost:56648/api/usuario', function (usuarioJsonPayload) {
+                $(usuarioJsonPayload).each(function (i, item) {
+                    $('#usuarios').append('<li>' + item.id + item.nome + item.email + '</li>');
+                });
+            });
+        });
+
+        $('#saveUsuario').click(function () {
+            alert($("#saveUsuarioForm").serialize(), function (item) {
+                $('#usuarios').append('<li>' + item.id + item.nome + item.email + '</li>');
+            });
+            $.post("http://localhost:56648/api/usuario",
+                $("#saveUsuarioForm").serialize(), function (item) {
+                    $('#usuarios').append('<li>' + item.id + item.nome + item.email + '</li>');
+                }, "json");
+        });
+    </script>-->
+    <div id="body">
+        <ul id="usuarios"></ul>
+    </div>
+    <form id="form1" method="post" action="http://localhost:56648/api/usuario" >
+        <h3>Criar novo Usuario</h3>
+        <p>
+            <label id="usuarioNome">Nome:</label>
+            <input type="text" name="nome" />
+        </p>
+        <p>
+            <label id="usuarioEmail">Email:</label>
+            <input type="text" name="email" />
+        </p>
+        <p>
+            <label id="usuarioSenha">Senha:</label>
+            <input type="text" name="senha" />
+        </p>
+        <input type="submit" id="saveUsuario" value="Save" />
+    </form>
+
+    <script type="text/javascript">
+        $('#form2').submit(function () {
+            var jqxhr = $.post('http://localhost:56648/api/usuario',
+                {
+                    "nome": $('#usuarioNome').val(),
+                    "email": $('#usuarioEmail').val(),
+                    "senha": $('#usuarioSenha').val()
+                }).success(function (item) {
+                    $('#usuarios').append('<li>' + item.id + item.nome + item.email + '</li>');
+                })
+                .error(function () {
+                    $('#message').html("Error posting the update.");
+                });
+            alert(jqxhr);
+            return false;
+        });
+
+
+
+
+
+        $("#form1").submit(function () {
+            var jqxhr = $.post('http://localhost:56648/api/usuario', $('#form1').serialize())
+                .success(function (item) {
+                    $('#usuarios').append('<li>' + item.id + item.nome + item.email + '</li>');
+                })
+                .error(function () {
+                    $('#message').html("Error posting the update.");
+                });
+            return false;
+        });
+    </script>
+</body>
+</html>
