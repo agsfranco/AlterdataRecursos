@@ -94,6 +94,7 @@
     <Content Include="img\logo_alterdata.svg" />
     <Content Include="InicialRecursos.aspx" />
     <Content Include="js\jquery-3.3.1.min.js" />
+    <Content Include="js\ScriptInicialRecursos.js" />
     <Content Include="Login.aspx" />
     <Content Include="style\recursos.css" />
     <Content Include="Web.config">

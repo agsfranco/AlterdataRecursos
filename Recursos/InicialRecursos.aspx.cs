@@ -7,11 +7,20 @@ namespace Recursos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                GetData((int)Session[Constantes.UsuarioId]);
+                ClientScript.RegisterClientScriptInclude("ScriptInicialRecursos", "/js/ScriptInicialRecursos.js");
+                try
+                {
+                    GetData((int)Session[Constantes.UsuarioId]);
+                }
+                catch
+                {
+
+                }
             }
-            catch {
+            else
+            {
                 
             }
         }
@@ -23,6 +32,7 @@ namespace Recursos
             {
                 GridRecursos.DataSource = rd.GetRecursosData(Usuario_id);
                 GridRecursos.DataBind();
+                UpdatePanelRecursos.Update();
             }
             finally
             {
@@ -53,11 +63,13 @@ namespace Recursos
                 HfExibirVotos.Value = Recurso_id.ToString();
                 GetVotacoesData(Recurso_id);
                 PanelVisualizarVotacoes.Visible = true;
+                UpdatePanelVotações.Update();
             }
             else
             {
                 HfExibirVotos.Value = "";
                 PanelVisualizarVotacoes.Visible = false;
+                UpdatePanelVotações.Update();
             }
         }
 
@@ -77,6 +89,7 @@ namespace Recursos
                     rd.Dispose();
                 }
                 PanelVotarRecurso.Visible = true;
+                UpdatePanelVotarRecurso.Update();
             }
             else
             {
@@ -84,6 +97,7 @@ namespace Recursos
                 lblTituloComentarioRecurso.Text = "";
                 tbComentarioVoto.Text = "";
                 PanelVotarRecurso.Visible = false;
+                UpdatePanelVotarRecurso.Update();
             }
         }
 

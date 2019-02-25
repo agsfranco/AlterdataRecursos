@@ -13,6 +13,24 @@ namespace Recursos {
     public partial class InicialRecursos {
         
         /// <summary>
+        /// Controle ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// Controle UpdatePanelRecursos.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelRecursos;
+        
+        /// <summary>
         /// Controle GridRecursos.
         /// </summary>
         /// <remarks>
@@ -20,6 +38,15 @@ namespace Recursos {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridRecursos;
+        
+        /// <summary>
+        /// Controle UpdatePanelVotarRecurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelVotarRecurso;
         
         /// <summary>
         /// Controle PanelVotarRecurso.
@@ -85,6 +112,33 @@ namespace Recursos {
         protected global::System.Web.UI.WebControls.LinkButton btnCancelarVoto;
         
         /// <summary>
+        /// Controle HfVotar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfVotar;
+        
+        /// <summary>
+        /// Controle HfDateTimeCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfDateTimeCliente;
+        
+        /// <summary>
+        /// Controle UpdatePanelVotações.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelVotações;
+        
+        /// <summary>
         /// Controle PanelVisualizarVotacoes.
         /// </summary>
         /// <remarks>
@@ -130,15 +184,6 @@ namespace Recursos {
         protected global::System.Web.UI.WebControls.LinkButton btnlVisualizarVotacoesFechar;
         
         /// <summary>
-        /// Controle HfVotar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HfVotar;
-        
-        /// <summary>
         /// Controle HfExibirVotos.
         /// </summary>
         /// <remarks>
@@ -146,14 +191,5 @@ namespace Recursos {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HfExibirVotos;
-        
-        /// <summary>
-        /// Controle HfDateTimeCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HfDateTimeCliente;
     }
 }
