@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AlterdataModel.Store" Provider="Npgsql" ProviderManifestToken="10.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="usuario_id" Type="int4" Nullable="false" />
+          <Property Name="sessao_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_acesso" Type="timestamp" />
+          <Property Name="ttl" Type="timestamp" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="comentario" Type="text" Nullable="false" />
+          <Property Name="data_cadastro" Type="timestamp" />
+          <Property Name="status" Type="int4" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="50" />
+          <Property Name="data_cadastro" Type="timestamp" />
+          <Property Name="ativo" Type="bool" />
+        </EntityType>
+        <EntityType Name="votacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="usuario_id" Type="int4" Nullable="false" />
+          <Property Name="recurso_id" Type="int4" Nullable="false" />
+          <Property Name="comentario" Type="text" Nullable="false" />
+          <Property Name="data_local" Type="timestamp" />
+          <Property Name="data_remota" Type="timestamp" />
+        </EntityType>
+        <Association Name="login_usuario_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="login" Type="Self.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="votacao_recurso_id_fkey">
+          <End Role="recurso" Type="Self.recurso" Multiplicity="1" />
+          <End Role="votacao" Type="Self.votacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="votacao">
+              <PropertyRef Name="recurso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="votacao_usuario_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="votacao" Type="Self.votacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="votacao">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlterdataModelStoreContainer">
+          <EntitySet Name="login" EntityType="Self.login" Schema="public" store:Type="Tables" />
+          <EntitySet Name="recurso" EntityType="Self.recurso" Schema="public" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="public" store:Type="Tables" />
+          <EntitySet Name="votacao" EntityType="Self.votacao" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="login_usuario_id_fkey" Association="Self.login_usuario_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="votacao_recurso_id_fkey" Association="Self.votacao_recurso_id_fkey">
+            <End Role="recurso" EntitySet="recurso" />
+            <End Role="votacao" EntitySet="votacao" />
+          </AssociationSet>
+          <AssociationSet Name="votacao_usuario_id_fkey" Association="Self.votacao_usuario_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="votacao" EntitySet="votacao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlterdataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="usuario_id" Type="Int32" Nullable="false" />
+          <Property Name="data_acesso" Type="DateTime" Precision="6" />
+          <Property Name="ttl" Type="DateTime" Precision="6" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.login_usuario_id_fkey" FromRole="login" ToRole="usuario" />
+          <Property Name="sessao_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="recurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_cadastro" Type="DateTime" Precision="6" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="votacao" Relationship="Self.votacao_recurso_id_fkey" FromRole="recurso" ToRole="votacao" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="data_cadastro" Type="DateTime" Precision="6" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="login" Relationship="Self.login_usuario_id_fkey" FromRole="usuario" ToRole="login" />
+          <NavigationProperty Name="votacao" Relationship="Self.votacao_usuario_id_fkey" FromRole="usuario" ToRole="votacao" />
+        </EntityType>
+        <EntityType Name="votacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="usuario_id" Type="Int32" Nullable="false" />
+          <Property Name="recurso_id" Type="Int32" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_local" Type="DateTime" Precision="6" />
+          <Property Name="data_remota" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="recurso" Relationship="Self.votacao_recurso_id_fkey" FromRole="votacao" ToRole="recurso" />
+          <NavigationProperty Name="usuario" Relationship="Self.votacao_usuario_id_fkey" FromRole="votacao" ToRole="usuario" />
+        </EntityType>
+        <Association Name="login_usuario_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="login" Type="Self.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="votacao_recurso_id_fkey">
+          <End Role="recurso" Type="Self.recurso" Multiplicity="1" />
+          <End Role="votacao" Type="Self.votacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="votacao">
+              <PropertyRef Name="recurso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="votacao_usuario_id_fkey">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="votacao" Type="Self.votacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="votacao">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlterdataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="login" EntityType="Self.login" />
+          <EntitySet Name="recurso" EntityType="Self.recurso" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="votacao" EntityType="Self.votacao" />
+          <AssociationSet Name="login_usuario_id_fkey" Association="Self.login_usuario_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="votacao_recurso_id_fkey" Association="Self.votacao_recurso_id_fkey">
+            <End Role="recurso" EntitySet="recurso" />
+            <End Role="votacao" EntitySet="votacao" />
+          </AssociationSet>
+          <AssociationSet Name="votacao_usuario_id_fkey" Association="Self.votacao_usuario_id_fkey">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="votacao" EntitySet="votacao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlterdataModelStoreContainer" CdmEntityContainer="AlterdataEntities">
+          <EntitySetMapping Name="login">
+            <EntityTypeMapping TypeName="AlterdataModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="sessao_id" ColumnName="sessao_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="data_acesso" ColumnName="data_acesso" />
+                <ScalarProperty Name="ttl" ColumnName="ttl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recurso">
+            <EntityTypeMapping TypeName="AlterdataModel.recurso">
+              <MappingFragment StoreEntitySet="recurso">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="AlterdataModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="votacao">
+            <EntityTypeMapping TypeName="AlterdataModel.votacao">
+              <MappingFragment StoreEntitySet="votacao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="recurso_id" ColumnName="recurso_id" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="data_local" ColumnName="data_local" />
+                <ScalarProperty Name="data_remota" ColumnName="data_remota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

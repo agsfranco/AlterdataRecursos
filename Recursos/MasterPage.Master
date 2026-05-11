@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Recursos.MasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+    <link href="style/recursos.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <title>Alterdata Recursos</title>    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <p>
+                <asp:Image ID="logoTopo" runat="server" ImageUrl="~/img/logo_alterdata.svg" Height="20%" Width="20%" />
+                <asp:Panel ID="PanelLogin" runat="server">
+                    Ol&aacute;&nbsp;<asp:Label ID="lblNome" runat="server" Text="Nome"></asp:Label>&nbsp;-&nbsp;<asp:Label ID="lblId" runat="server" Text="Id"></asp:Label>&nbsp;&nbsp;<asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Sair</asp:LinkButton>
+                </asp:Panel>
+                <hr />
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" Visible="true">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
